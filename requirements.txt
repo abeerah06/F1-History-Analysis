@@ -103,7 +103,7 @@ patsy==0.5.6
 pexpect==4.9.0
 pillow==10.2.0
 platformdirs==4.2.0
-plotly
+plotly==6.0.0
 pluggy==1.4.0
 prometheus-client==0.19.0
 prompt-toolkit==3.0.43
