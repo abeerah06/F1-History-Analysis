@@ -16,6 +16,7 @@ def load_data():
     results_df = results_df.merge(races_df[['raceId', 'year', 'race_name']], on='raceId', how='left')
 
     return results_df
+
 def update_fig_layout(fig):
         fig.update_layout(
             plot_bgcolor='#020517',
@@ -26,13 +27,68 @@ def update_fig_layout(fig):
             yaxis=dict(title_font=dict(size=18, color='white'), tickfont=dict(size=14, color='white'))
         )
         return fig
+
 def plot_data(df, x, y, title, plot_type, color_col=None):
     if plot_type == "Line Chart":
-        fig = px.line(df, x=x, y=y, title=title, markers=True, line_shape='spline', color=color_col)
+        fig = px.line(df, x=x, y=y, title=title, markers=True, line_shape='spline', color=color_col,color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
     elif plot_type == "Bar Chart":
-        fig = px.bar(df, x=x, y=y, title=title, barmode='group', color=color_col)
+        fig = px.bar(df, x=x, y=y, title=title, barmode='group', color=color_col,color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
     elif plot_type == "Pie Plot":
-        fig = px.pie(df, x=x, y=y, title=title, color=color_col, size=y)
+        fig = px.pie(df, names=x, values=y, title=title, color=color_col,color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])  # Fixed for Pie Plot
     update_fig_layout(fig)   
     return fig
 
@@ -106,4 +162,3 @@ def show():
         else:
             fig = plot_data(comparison_performance, 'year', metric_column, "Driver Comparison - " + selected_metric, plot_type, 'surname')
             st.plotly_chart(fig, use_container_width=True)
-    

@@ -51,9 +51,30 @@ def show():
         chart_type = st.radio("Choose Visualization Type:", ["Bar Chart", "Pie Chart"])
         
         if chart_type == "Bar Chart":
-            fig_poles = px.bar(pole_positions, x='driver_name', y='pole_count', title="Most Pole Positions per Driver", labels={'pole_count': 'Pole Positions'}, color_discrete_sequence=['#FF5733'])
+            fig_poles = px.bar(pole_positions, x='driver_name', y='pole_count', title="Most Pole Positions per Driver", labels={'pole_count': 'Pole Positions'}, color_discrete_sequence=[
+                                    
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         else:
-            fig_poles = px.pie(pole_positions, names='driver_name', values='pole_count', title="Most Pole Positions per Driver", color_discrete_sequence=px.colors.sequential.RdBu)
+            fig_poles = px.pie(pole_positions, names='driver_name', values='pole_count', title="Most Pole Positions per Driver",color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         fig_poles=update_fig_layout(fig_poles)
         st.plotly_chart(fig_poles, use_container_width=True)
     
@@ -68,7 +89,25 @@ def show():
         if selected_drivers:
             qualifying_data = qualifying_data[qualifying_data['driver_name'].isin(selected_drivers)]
         
-        fig_qualifying = px.scatter(qualifying_data, x='grid', y='positionOrder', color='driver_name', title="Qualifying Position vs. Final Position")
+        fig_qualifying = px.scatter(qualifying_data, x='grid', y='positionOrder', color='driver_name', title="Qualifying Position vs. Final Position",color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         fig_qualifying=update_fig_layout(fig_qualifying)
         st.plotly_chart(fig_qualifying, use_container_width=True)
     
@@ -84,6 +123,24 @@ def show():
         if selected_drivers:
             pole_winners = pole_winners[pole_winners['driver_name'].isin(selected_drivers)]
         
-        fig_pole_heatmap = px.density_heatmap(pole_winners, x='circuit_name', y='driver_name', z='count', title="Track-wise Pole Position Winners", color_continuous_scale='Viridis')
+        fig_pole_heatmap = px.density_heatmap(pole_winners, x='circuit_name', y='driver_name', z='count', title="Track-wise Pole Position Winners", color_continuous_scale='Viridis',color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         fig_pole_heatmap=update_fig_layout(fig_pole_heatmap)
         st.plotly_chart(fig_pole_heatmap, use_container_width=True)

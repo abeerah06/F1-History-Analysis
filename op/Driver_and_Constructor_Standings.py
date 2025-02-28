@@ -27,8 +27,8 @@ def show():
     constructor_standings = season_results.groupby(['team_name'])['points'].sum().reset_index()
     constructor_standings = constructor_standings.sort_values(by='points', ascending=False)
     
-    plot_option = st.radio("Select Analysis Type:", ["Driver Standings", "Constructor Standings", "Points Progression"])
-    chart_type = st.selectbox("Select Chart Type:", ["Bar Chart", "Pie Chart", "Line Chart", "Scatter Plot"])
+    plot_option = st.radio("Select Analysis Type:", ["Driver Standings", "Constructor Standings",])
+    chart_type = st.selectbox("Select Chart Type:", ["Bar Chart", "Pie Chart",])
     top_n = st.slider("Select Top N Drivers:", min_value=1, max_value=20, value=10)
     
     def update_fig_layout(fig):
@@ -47,39 +47,89 @@ def show():
         driver_data = driver_standings.head(top_n)
         
         if chart_type == "Bar Chart":
-            fig = px.bar(driver_data, x='surname', y='points', color='surname', title=f"Top {top_n} Drivers")
+            fig = px.bar(driver_data, x='surname', y='points', color='surname', title=f"Top {top_n} Drivers", color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         elif chart_type == "Pie Chart":
-            fig = px.pie(driver_data, names='surname', values='points', title=f"Top {top_n} Drivers")
-        elif chart_type == "Scatter Plot":
-            fig = px.scatter(driver_data, x='surname', y='points', size='points', color='surname', title=f"Top {top_n} Drivers")
-        else:
-            fig = px.line(driver_data, x='surname', y='points', color='surname', title=f"Top {top_n} Drivers")
+            fig = px.pie(driver_data, names='surname', values='points', title=f"Top {top_n} Drivers",color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         
         st.plotly_chart(update_fig_layout(fig), use_container_width=True)
     
     elif plot_option == "Constructor Standings":
         st.subheader("Constructor Standings")
         if chart_type == "Bar Chart":
-            fig = px.bar(constructor_standings, x='team_name', y='points', color='team_name', title="Constructor Standings")
+            fig = px.bar(constructor_standings, x='team_name', y='points', color='team_name', title="Constructor Standings",color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         elif chart_type == "Pie Chart":
-            fig = px.pie(constructor_standings, names='team_name', values='points', title="Constructor Standings")
-        elif chart_type == "Scatter Plot":
-            fig = px.scatter(constructor_standings, x='team_name', y='points', size='points', color='team_name', title="Constructor Standings")
-        else:
-            fig = px.line(constructor_standings, x='team_name', y='points', color='team_name', title="Constructor Standings")
-        
+            fig = px.pie(constructor_standings, names='team_name', values='points', title="Constructor Standings",color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         st.plotly_chart(update_fig_layout(fig), use_container_width=True)
     
-    elif plot_option == "Points Progression":
-        st.subheader("Cumulative Points Progression")
-        driver_progression = season_results.groupby(['raceId', 'surname', 'race_name'])['points'].sum().reset_index()
-        driver_progression = driver_progression.sort_values(by=['raceId', 'points'], ascending=[True, False])
-        
-        if chart_type == "Line Chart":
-            fig = px.line(driver_progression, x='race_name', y='points', color='surname', title="Points Progression Across Races")
-        elif chart_type == "Scatter Plot":
-            fig = px.scatter(driver_progression, x='race_name', y='points', color='surname', title="Points Progression Across Races")
-        else:
-            fig = px.bar(driver_progression, x='race_name', y='points', color='surname', title="Points Progression Across Races")
-        
-        st.plotly_chart(update_fig_layout(fig), use_container_width=True)

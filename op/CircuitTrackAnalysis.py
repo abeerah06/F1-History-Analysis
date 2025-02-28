@@ -53,7 +53,25 @@ def show():
         st.subheader("⏱️ Fastest Lap Times by Year")
         if 'fastestLapTime' in filtered_results.columns and filtered_results['fastestLapTime'].notna().any():
             fastest_laps = filtered_results.loc[filtered_results.groupby('year')['fastestLapTime'].idxmin()][['year', 'surname', 'fastestLapTime']]
-            fig = px.bar(fastest_laps, x='year', y='fastestLapTime', color='surname', title="Fastest Lap Times", labels={'fastestLapTime': 'Lap Time (s)', 'year': 'Year'}, color_discrete_sequence=px.colors.qualitative.Set1)
+            fig = px.bar(fastest_laps, x='year', y='fastestLapTime', color='surname', title="Fastest Lap Times", labels={'fastestLapTime': 'Lap Time (s)', 'year': 'Year'}, color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
             fig = update_fig_layout(fig)
             st.plotly_chart(fig, use_container_width=True)
         else:
@@ -64,7 +82,25 @@ def show():
         driver_wins = filtered_results[filtered_results['positionOrder'] == 1]['surname'].value_counts().reset_index()
         driver_wins.columns = ['Driver', 'Wins']
         driver_wins = driver_wins.head(top_n)
-        fig = px.bar(driver_wins, x='Wins', y='Driver', orientation='h', title="Most Successful Drivers", labels={'Wins': 'Number of Wins', 'Driver': 'Driver'}, color='Driver')
+        fig = px.bar(driver_wins, x='Wins', y='Driver', orientation='h', title="Most Successful Drivers", labels={'Wins': 'Number of Wins', 'Driver': 'Driver'}, color='Driver',color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         fig = update_fig_layout(fig)
         st.plotly_chart(fig, use_container_width=True)
     
@@ -73,13 +109,49 @@ def show():
         team_wins = filtered_results[filtered_results['positionOrder'] == 1]['team_name'].value_counts().reset_index()
         team_wins.columns = ['Team', 'Wins']
         team_wins = team_wins.head(top_n)
-        fig = px.bar(team_wins, x='Wins', y='Team', orientation='h', title="Most Successful Teams", labels={'Wins': 'Number of Wins', 'Team': 'Team'}, color='Team')
+        fig = px.bar(team_wins, x='Wins', y='Team', orientation='h', title="Most Successful Teams", labels={'Wins': 'Number of Wins', 'Team': 'Team'}, color='Team',color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         fig = update_fig_layout(fig)
         st.plotly_chart(fig, use_container_width=True)
     
     elif selected_data == "Top 3 Finishers":
         st.subheader("🥇 Top 3 Finishers Over the Years")
         top_finishers = filtered_results[filtered_results['positionOrder'] <= top_n][['year', 'surname', 'positionOrder']]
-        fig = px.scatter(top_finishers, x='year', y='positionOrder', color='surname', title="Top 3 Finishers", labels={'positionOrder': 'Finishing Position', 'year': 'Year'}, size_max=10)
+        fig = px.scatter(top_finishers, x='year', y='positionOrder', color='surname', title="Top 3 Finishers", labels={'positionOrder': 'Finishing Position', 'year': 'Year'}, size_max=10,color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         fig = update_fig_layout(fig)
         st.plotly_chart(fig, use_container_width=True)

@@ -74,17 +74,50 @@ def show():
         if plot_type == "Bar Chart":
             fig = px.bar(
                 styled_drivers, x='Position', y='points',  
-                title="Podium Finishers", labels={'Position': 'Position', 'points': 'Points'},
+                title="Top Finishers", labels={'Position': 'Position', 'points': 'Points'},
                 color='Driver',  
-                color_discrete_sequence=px.colors.qualitative.Set1,
-            )
+                color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ])
         
         elif plot_type == "Pie Chart":
             fig = px.pie(
                 styled_drivers, names='Driver', values='points',
                 title="Points Distribution Among Top Drivers",
                 color='Driver',
-                color_discrete_sequence=px.colors.qualitative.Set1,
+                color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ],
             )
 
         elif plot_type == "Scatter Plot":
@@ -94,7 +127,25 @@ def show():
                 title="Top Drivers Performance",
                 size='points',
                 color='Driver',
-                color_discrete_sequence=px.colors.qualitative.Set1,
+                color_discrete_sequence=[
+                                    "#c1121f",  # Ferrari Red
+                                    "#669bbc",  # Light Blue (Mercedes Accent)
+                                    "#003049",  # Dark Blue (Williams)
+                                    "#005f73",  # Deep Teal
+                                    "#0a9396",  # Aquamarine Teal
+                                    "#23aaff",  # Alpine Cyan
+                                    "#001d3d",  # Midnight Navy
+                                    "#002855",  # Royal Blue
+                                    "#1b263b",  # Graphite Blue
+                                    "#ffffff",  # Pure White
+                                    "#f8f9fa",  # Off White
+                                    "#b0b3b8",  # Soft Grayish White
+                                    "#979dac",  # Cool Gray
+                                    "#444f5a",  # Dark Gray Blue
+                                    "#780000",  # Dark Blood Red
+                                    "#ff4d4d",  # Light Red
+                                    "#89c2d9",  # Soft Sky Blue
+                                    "#d9d9d9"   ],
             )
             fig.update_traces(textposition='top center')
         if fig:
