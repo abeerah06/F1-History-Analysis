@@ -61,7 +61,7 @@ page = st.sidebar.radio("Menu", [
     "Home", "Race History", "Constructors Standings", "Driver & Constructor Standings", "Performance Trends", 
     "Circuit & Track Analysis","Pole Positions & Qualifying Analysis"
 ])
-
+st.sidebar.write('© 2025 Abeerah Saleem')
 if page == "Home":
     st.title("F1 History Summary")
     st.image("pngegg.png")
